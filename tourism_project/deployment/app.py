@@ -6,12 +6,12 @@ import os
 
 st.set_page_config(
     page_title="Wellness Tourism Package Purchase Predictor",
-    page_icon="✈️",
+    page_icon="",
     layout="centered"
 )
 
 # 1. Load the trained model
-MODEL_PATH = 'tourism_project/deployment/best_model.pkl'
+MODEL_PATH = 'tourism_project/deployment/best_model.joblib'
 
 @st.cache_resource
 def load_model():
