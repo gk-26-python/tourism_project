@@ -78,8 +78,8 @@ def train_model():
         
         # 9. Ensure deployment directory exists and save best model
         os.makedirs("tourism_project/deployment", exist_ok=True)
-        joblib.dump(best_model, "tourism_project/deployment/best_model.pkl")
-        print("\nBest model successfully saved to tourism_project/deployment/best_model.pkl")
+        joblib.dump(best_model, "tourism_project/deployment/best_model.joblib")
+        print("\nBest model successfully saved to tourism_project/deployment/best_model.joblib")
 
 if __name__ == '__main__':
     train_model()
