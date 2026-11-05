@@ -30,12 +30,12 @@ if model is None:
     st.error(f"Trained model file could not be found at `{MODEL_PATH}`. Please train the model and commit it to the repository first.")
 else:
     st.success("Trained model loaded successfully!")
-    
+
     st.subheader("Customer Profile Information")
-    
+
     # Divide form inputs into two columns
     col1, col2 = st.columns(2)
-    
+
     with col1:
         Age = st.number_input("Age", min_value=18, max_value=100, value=30, step=1)
         TypeofContact = st.selectbox("Type of Contact", ["Self Inquiry", "Company Invited"])
@@ -61,7 +61,7 @@ else:
     # Map inputs to DataFrame representation
     passport_val = 1 if Passport == "Yes" else 0
     own_car_val = 1 if OwnCar == "Yes" else 0
-    
+
     input_data = pd.DataFrame({
         'Age': [Age],
         'TypeofContact': [TypeofContact],
@@ -86,7 +86,7 @@ else:
     if st.button("Predict Purchase Likelihood"):
         prediction = model.predict(input_data)[0]
         prediction_proba = model.predict_proba(input_data)[0][1]
-        
+
         st.write("---")
         if prediction == 1:
             st.success(f"**Prediction:** The customer is likely to purchase the Wellness Tourism Package! (Probability: {prediction_proba:.2%})")
