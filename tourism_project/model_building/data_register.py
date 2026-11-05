@@ -4,14 +4,14 @@ import sys
 
 def register_data():
     csv_path = 'tourism_project/data/tourism.csv'
-    
+
     # 1. Check if dataset exists
     if not os.path.exists(csv_path):
         print(f"Error: Dataset not found at {csv_path}")
         sys.exit(1)
-        
+
     print(f"Dataset found at: {csv_path}")
-    
+
     # 2. Load the dataset
     try:
         df = pd.read_csv(csv_path)
@@ -19,16 +19,16 @@ def register_data():
     except Exception as e:
         print(f"Error reading the CSV file: {e}")
         sys.exit(1)
-        
+
     # 3. Define the expected columns
     expected_columns = [
-        'CustomerID', 'ProdTaken', 'Age', 'TypeofContact', 'CityTier', 
-        'Occupation', 'Gender', 'NumberOfPersonVisiting', 'PreferredPropertyStar', 
-        'MaritalStatus', 'NumberOfTrips', 'Passport', 'OwnCar', 
-        'NumberOfChildrenVisiting', 'Designation', 'MonthlyIncome', 
+        'CustomerID', 'ProdTaken', 'Age', 'TypeofContact', 'CityTier',
+        'Occupation', 'Gender', 'NumberOfPersonVisiting', 'PreferredPropertyStar',
+        'MaritalStatus', 'NumberOfTrips', 'Passport', 'OwnCar',
+        'NumberOfChildrenVisiting', 'Designation', 'MonthlyIncome',
         'PitchSatisfactionScore', 'ProductPitched', 'NumberOfFollowups', 'DurationOfPitch'
     ]
-    
+
     # 4. Validate columns
     missing_cols = [col for col in expected_columns if col not in df.columns]
     if missing_cols:
@@ -36,7 +36,7 @@ def register_data():
         sys.exit(1)
     else:
         print("✓ Validation Succeeded! All expected columns are present.")
-        
+
     # 5. Print a short summary of the data
     print("\n--- Dataset Summary Info ---")
     print(f"Total Rows: {df.shape[0]}")
